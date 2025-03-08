@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ubuntu_container:
+    build: .
+    container_name: oxen_service_node
+    privileged: true
+    volumes:
+      - /share:/share
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    environment:
+      - TZ=Asia/Seoul
+    command: ["/usr/sbin/init"]
+    deploy:
+      resources:
+        limits:
+          cpus: "1.5"
